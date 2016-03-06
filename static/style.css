@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+#display .panel-heading {
+  position: relative;
+  height: 45px;
+}
+
+#display button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+
+
+.display.image-container {
+  height: 1024px;
+  width: 768px;
+}
