@@ -7,7 +7,7 @@ function Display(viewer) {
   var sideMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00, transparent: true, opacity: 0.5 });
 
   this.display = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial([sideMaterial, sideMaterial, sideMaterial, sideMaterial, virtualSceneMap, virtualSceneMap]));
-  this.display.position.set(0, 0, 100);
+  this.display.position.set(0, 0, config.zDistance);
 
   viewer.scene.add(this.display);
 }

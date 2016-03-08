@@ -1,10 +1,12 @@
 window.LiveReloadOptions = { host: 'localhost' };
 require('livereload-js');
+window.THREE = require('../../node_modules/three/three.js');
 require('../lib/TrackballControls.js');
 
 var RecordingMaterial = require('./recording.js');
 var VirtualScene = require('./virtual-scene.js');
 var Display = require('./display.js');
+var Slit = require('./slit.js');
 
 function Viewer(config) {
   this.config = config;
@@ -19,6 +21,8 @@ function Viewer(config) {
   this.recording = new RecordingMaterial(this);
   this.virtualScene = new VirtualScene(this);
   this.display   = new Display(this);
+
+  this.slit = new Slit(this);
 
   var ambient = new THREE.AmbientLight( 0xffffff );
   this.scene.add(ambient);
@@ -60,9 +64,21 @@ var viewer = new Viewer({
     height: 147.456,
     thickness: 1,
 
+    zDistance: 100, 
+
     resolution: {
       width: 2048,
       height: 1536
+    }
+  },
+  slit: {
+    width: 127,
+    height: 102,
+    thickness: 2.4,
+    zDistance: 50, 
+    apeture: {
+      offset: 2,
+      width: 5 
     }
   }
 });
