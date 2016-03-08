@@ -1,0 +1,5 @@
+- implement slit control visualization
+- start working on camera frame rendering (camera line frustrum)
+- basic UI to toggle settings
+- split UI to see rendered frames for scene
+- split UI to see actual frame buffer
