@@ -7,6 +7,7 @@ var RecordingMaterial = require('./recording.js');
 var VirtualScene = require('./virtual-scene.js');
 var Display = require('./display.js');
 var Slit = require('./slit.js');
+var GUI = require('./gui.js');
 
 function Viewer(config) {
   this.config = config;
@@ -24,16 +25,17 @@ function Viewer(config) {
 
   this.slit = new Slit(this);
 
-  var ambient = new THREE.AmbientLight( 0xffffff );
+  var ambient = new THREE.AmbientLight(0xffffff);
   this.scene.add(ambient);
 
-
-  var light = new THREE.DirectionalLight( 0xffffff );
+  var light = new THREE.DirectionalLight(0xffffff);
   light.position = this.camera.position;
   this.scene.add(light);
 
   this.camera.position.z = 200;
   this.controls = new THREE.TrackballControls(this.camera);
+
+  this.gui = new GUI(this);
 }
 
 Viewer.prototype = {
@@ -72,12 +74,15 @@ var viewer = new Viewer({
     }
   },
   slit: {
-    width: 127,
+    width: 127 * 3,
     height: 102,
     thickness: 2.4,
     zDistance: 50, 
     apeture: {
-      offset: 2,
+      offset: {
+        x: 127 - 5,
+        y: 5
+      },
       width: 5 
     }
   }

@@ -9,12 +9,14 @@ function Slit(viewer) {
   rectShape.lineTo(0, 0);
 
   var slitPath = new THREE.Path();
-  var offset = config.apeture.offset;
-  slitPath.moveTo(config.apeture.width + offset, offset);
-  slitPath.lineTo(config.apeture.width + offset, config.height - offset);
-  slitPath.lineTo(offset, config.height - offset);
-  slitPath.lineTo(offset, offset);
-  slitPath.lineTo(config.apeture.width + offset, offset);
+  var offsetX = config.apeture.offset.x
+  var offsetY = config.apeture.offset.y;
+
+  slitPath.moveTo(config.apeture.width + offsetX, offsetY);
+  slitPath.lineTo(config.apeture.width + offsetX, config.height - offsetY);
+  slitPath.lineTo(offsetX, config.height - offsetY);
+  slitPath.lineTo(offsetX, offsetY);
+  slitPath.lineTo(config.apeture.width + offsetX, offsetY);
 
   rectShape.holes.push(slitPath);
 
@@ -22,9 +24,14 @@ function Slit(viewer) {
   var material = new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
 
   this.slit = new THREE.Mesh(geometry, material);
-  this.slit.position.set(-(config.width/2), -(config.height/2), config.zDistance);
+  this.slit.position.set(-(config.width/4), -(config.height/2), config.zDistance);
 
   viewer.scene.add(this.slit);
+}
+
+Slit.prototype.translate = function(offset, velocity) {
+  var currentPosition = this.slit.position.x;
+
 }
 
 module.exports = Slit;
