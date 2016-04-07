@@ -8,7 +8,7 @@ function ui(viewer) {
 
   window.onload = function() {
     var gui = this.dat = new dat.GUI();
-     
+
       function propGroup(key, path, obj, gui) {
         this.path = path;
       }

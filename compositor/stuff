@@ -1,0 +1,22 @@
+ //dBbox.ul.style.top = bbox[0].y;
+    //dBbox.ul.style.left = bbox[0].x;
+
+    dBbox.ur.style.top = bbox[1].y;
+    dBbox.ur.style.left = bbox[1].x;
+
+    dBbox.lr.style.top = bbox[2].y;
+    dBbox.lr.style.left = bbox[2].x;
+
+    dBbox.ll.style.top = bbox[3].y;
+    dBbox.ll.style.left = bbox[3].x;
+
+
+
+  var corners = [
+    (new THREE.Vector3(bbox.min.x, bbox.max.y, bbox.min.z)).project(camera),
+    bbox.max.project(camera),
+    (new THREE.Vector3(bbox.max.x, bbox.min.y, bbox.min.z)).project(camera),
+    bbox.min.project(camera)
+  ];
+
+
